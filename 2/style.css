@@ -1,0 +1,55 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+html, body {
+  margin: 0;
+}
+
+section.slider {
+  height: 600px;
+  width: 100%;
+  overflow: hidden;
+}
+section.slider > .slides-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+section.slider > .slides-container > article {
+  height: 100%;
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  float: left;
+  cursor: pointer;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+section.slider > .slides-container > article.slide-0 {
+  width: 80%;
+  background-image: url("../league-of-legend.jpg");
+}
+section.slider > .slides-container > article.slide-1 {
+  width: 10%;
+  background-image: url("../maplestory.jpg");
+}
+section.slider > .slides-container > article.slide-2 {
+  width: 10%;
+  background-image: url("../pokemon.jpg");
+}

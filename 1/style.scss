@@ -1,0 +1,119 @@
+@import "compass";
+
+// Absolute Position
+@mixin abs-pos($top: auto, $right: auto, $bottom: auto, $left: auto) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+// Responsive Media Query
+@mixin respond-to($breakpoint) {
+    @media screen and (max-width: $breakpoint) {
+        @content;
+    }
+}
+
+// Declare Variables
+$sm-screen: 768px;
+$md-screen: 992px;
+$lg-screen: 1200px;
+
+// Browser Reset
+html {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	-webkit-box-sizing: inherit;
+	-moz-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+a:hover, a:visited, a:link, a:active {
+	text-decoration: none;
+}
+
+html, body {
+	margin: 0;
+}
+
+// Slider Style
+section.slider {
+	height: 600px;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+
+	> .slider-pagi {
+		list-style: none;
+		padding-left: 20px;
+		z-index: 2;
+		@include abs-pos(auto, auto, 0px, 50%);
+		@include transform(translateX(-50%));
+
+		> li {
+			display: inline-block;
+			position: relative;
+			width: 1.5rem;
+			height: 1.5rem;
+			margin: 0 0.5rem;
+			border: 1.5px solid black;
+			cursor: pointer;
+			@include border-radius(50%);
+
+			&:before {
+				content: "";
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 1rem;
+				height: 1rem;
+				background: black;
+				@include border-radius(50%);
+				@include transition(all 0.3s ease-in-out);
+				@include transform(translate(-50%, -50%) scale(0));
+			}
+
+			&.active:before, &:hover:before {
+				@include transform(translate(-50%, -50%) scale(1));
+			}
+		}
+	}
+
+	> .slides-container {
+		height: 100%;
+		width: 100%;
+		position: relative;
+		will-change: transform;
+		@include transition(all 0.5s ease-in-out);
+
+		> article {
+			height: 100%;
+			width: 100%;
+			background-size: cover;
+			background-position: center center;
+			will-change: transform;
+			@include abs-pos(0, auto, auto, auto);
+
+			&:nth-child(1) {
+				left: 0;
+				background-image: url("../league-of-legend.jpg");
+			}
+
+			&:nth-child(2) {
+				left: 100%;
+				background-image: url("../maplestory.jpg");
+			}
+
+			&:nth-child(3) {
+				left: 200%;
+				background-image: url("../pokemon.jpg");
+			}
+		}
+	}
+}
